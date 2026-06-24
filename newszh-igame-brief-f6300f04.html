@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 发现游戏世界的更多可能</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #fbfbfb;
+      color: #222;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 3rem;
+    }
+    /* hero */
+    .hero {
+      text-align: center;
+      padding: 3.5rem 0 2.5rem;
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #111;
+      margin-bottom: 0.75rem;
+    }
+    .hero .sub {
+      font-size: 1.1rem;
+      color: #5a5a5a;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .hero .tagline {
+      display: inline-block;
+      margin-top: 1.2rem;
+      background: #eef2f5;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      color: #2a4a5f;
+    }
+    /* 分割 */
+    hr {
+      border: 0;
+      height: 1px;
+      background: #e0e4e8;
+      margin: 3rem 0;
+    }
+    /* 通用标题 */
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+      color: #1d2b36;
+      letter-spacing: -0.01em;
+    }
+    .section-sub {
+      font-size: 0.95rem;
+      color: #5a6a76;
+      margin-bottom: 2rem;
+    }
+    /* 优势区 —— 卡片 */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem 1.2rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02), 0 1px 4px rgba(0, 0, 0, 0.04);
+      transition: box-shadow 0.2s;
+    }
+    .card:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: #1c2b36;
+    }
+    .card p {
+      font-size: 0.9rem;
+      color: #3f4e5a;
+      line-height: 1.55;
+    }
+    /* 说明区 */
+    .explain-text {
+      background: white;
+      padding: 1.8rem 2rem;
+      border-radius: 20px;
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.02);
+    }
+    .explain-text p {
+      margin-bottom: 1rem;
+    }
+    .explain-text p:last-child {
+      margin-bottom: 0;
+    }
+    .inline-link {
+      color: #1f6b8f;
+      text-decoration: none;
+      border-bottom: 1px solid #cbdae5;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .inline-link:hover {
+      border-bottom-color: #1f6b8f;
+      color: #12425e;
+    }
+    /* FAQ 摘要 */
+    .faq-item {
+      margin-bottom: 1.5rem;
+      padding: 0 0.2rem;
+    }
+    .faq-item strong {
+      display: block;
+      font-weight: 500;
+      color: #1e2f3c;
+      margin-bottom: 0.25rem;
+      font-size: 1rem;
+    }
+    .faq-item p {
+      font-size: 0.92rem;
+      color: #3b4c59;
+      margin-left: 0.3rem;
+    }
+    .faq-more {
+      font-size: 0.9rem;
+      color: #446a7a;
+      border-left: 3px solid #d1dfe8;
+      padding-left: 1rem;
+      margin-top: 1.2rem;
+    }
+    /* 底部链接 */
+    .bottom-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2rem 2rem;
+      margin: 2.8rem 0 1rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid #e3e9ef;
+    }
+    .bottom-links a {
+      text-decoration: none;
+      color: #3d5b6b;
+      font-size: 0.95rem;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .bottom-links a:hover {
+      border-bottom-color: #3d5b6b;
+    }
+    .footnote {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #899aa7;
+      margin-top: 0.5rem;
+    }
+    /* 响应式 */
+    @media (max-width: 640px) {
+      .page {
+        padding: 1.8rem 1rem 2.5rem;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .grid-3 {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .explain-text {
+        padding: 1.2rem 1.2rem;
+      }
+      .bottom-links {
+        gap: 1rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- hero -->
+    <div class="hero">
+      <h1>爱游戏 · 不止于玩</h1>
+      <p class="sub">在快速迭代的游戏生态里，找到真正值得投入时间的作品与观点。</p>
+      <span class="tagline">认真聊游戏 · 中立 · 面向玩家</span>
+    </div>
+
+    <hr>
+
+    <!-- 优势区 -->
+    <div class="section-title">为什么值得停下来看看</div>
+    <p class="section-sub">我们筛选、整理、呈现游戏领域里扎实的内容，减少信息噪音。</p>
+    <div class="grid-3">
+      <div class="card">
+        <h3>🎯 主题策展</h3>
+        <p>每期围绕一个具体方向——独立佳作、冷门重制、策略复兴——而非零散资讯堆砌。</p>
+      </div>
+      <div class="card">
+        <h3>📋 扎实引介</h3>
+        <p>不追逐首发与噱头，更关注玩法内核、开发者背景及社区真实反馈。</p>
+      </div>
+      <div class="card">
+        <h3>🔁 长期视角</h3>
+        <p>游戏寿命不止于发售日，我们持续跟踪版本更新与玩家生态演变。</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- 说明区（切入角度：从关键词背后的主题内容展开） -->
+    <div class="section-title">从「爱游戏」出发，聊点实在的</div>
+    <div class="explain-text">
+      <p>「爱游戏」三个字背后，不是泛泛的口号，而是一种持续的关注习惯——你愿意为了一款关卡设计精巧的平台跳跃游戏熬夜研究路线，也可能为了一个冷门 RPG 的世界观写下几千字笔记。</p>
+      <p>我们理解的「爱游戏」，是承认游戏作为媒介的复杂性：它可以是纯然的快乐，也可以是沉重的叙事实验。因此，<a href="https://newszh-igame.com" class="inline-link">爱游戏</a>尝试用更稳定的节奏，呈现那些值得被反复讨论的作品与现象，而不是被算法推上首页的速食内容。</p>
+      <p>无论你沉迷于 4X 策略的棋盘，还是钟情于像素风点击解谜，这里都留有一块不慌不忙的讨论空间。我们不定义什么是「好游戏」，但努力让每一次推荐都有理有据。</p>
+    </div>
+
+    <hr>
+
+    <!-- FAQ 摘要 -->
+    <div class="section-title">你可能想了解的 · 摘要</div>
+    <div class="faq-item">
+      <strong>Q：内容更新频率如何？</strong>
+      <p>目前保持每周 2–3 篇专题文章或评测摘要，长文与短评穿插。重大版本更新或行业事件会额外补充。</p>
+    </div>
+    <div class="faq-item">
+      <strong>Q：是否有读者投稿或推荐通道？</strong>
+      <p>我们开放长期选题征集，如果你玩到一款觉得被低估的游戏，可以通过站内页面的联系入口分享。每封邮件都会被阅读。</p>
+    </div>
+    <div class="faq-item">
+      <strong>Q：文章会涉及剧透吗？</strong>
+      <p>评测类内容会明确标注剧透范围，叙事分析类文章会在标题或开头给出剧透预警，方便不同阅读习惯的读者选择。</p>
+    </div>
+    <div class="faq-more">
+      🗂️ 完整 FAQ 及更详细的内容索引，可以在站内「关于」页面找到。
+    </div>
+
+    <!-- 底部链接 -->
+    <div class="bottom-links">
+      <a href="https://newszh-igame.com">爱游戏</a>
+      <a href="#">近期文章</a>
+      <a href="#">专题索引</a>
+      <a href="#">关于</a>
+      <a href="#">联系</a>
+    </div>
+    <div class="footnote">
+      不制造焦虑 · 不贩卖情怀 · 只提供值得花时间的游戏内容
+    </div>
+  </div>
+</body>
+</html>
