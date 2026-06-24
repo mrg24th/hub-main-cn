@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 轻量导航介绍页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(145deg, #fce9d8 0%, #f7d8c3 60%, #f2c9b0 100%);
+            min-height: 100vh;
+            padding: 2rem 1.2rem;
+            color: #2d2a24;
+            line-height: 1.6;
+        }
+
+        .page-container {
+            max-width: 1120px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2.2rem;
+        }
+
+        /* ---- 顶部导航 ---- */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 248, 242, 0.75);
+            backdrop-filter: blur(4px);
+            padding: 0.9rem 1.8rem;
+            border-radius: 60px;
+            box-shadow: 0 6px 14px rgba(160, 100, 60, 0.10);
+            flex-wrap: wrap;
+            gap: 0.8rem 1rem;
+        }
+
+        .site-identity {
+            font-weight: 600;
+            font-size: 1.3rem;
+            letter-spacing: 0.02em;
+            color: #7a4a2e;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.2rem 2rem;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4d3829;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.3rem 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: #b47044;
+            color: #6f412b;
+        }
+
+        .nav-em {
+            background: #dba47f;
+            color: #2d1e14 !important;
+            padding: 0.3rem 1rem !important;
+            border-radius: 30px;
+            border-bottom: none !important;
+            font-weight: 600;
+        }
+
+        /* ---- 卡片通用 ---- */
+        .card {
+            background: #fffaf7;
+            border-radius: 32px;
+            padding: 2rem 2.4rem;
+            box-shadow: 0 12px 28px rgba(110, 70, 40, 0.08);
+            transition: box-shadow 0.2s;
+        }
+
+        .card-soft {
+            background: rgba(255, 250, 245, 0.85);
+            backdrop-filter: blur(2px);
+        }
+
+        /* ---- hero 区 ---- */
+        .hero-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 2.8rem 2rem 3rem;
+        }
+
+        .hero-wrap h1 {
+            font-size: 2.6rem;
+            font-weight: 650;
+            color: #492f1f;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero-wrap .subhead {
+            font-size: 1.1rem;
+            max-width: 620px;
+            color: #4f3d30;
+            background: rgba(235, 206, 184, 0.4);
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-wrap .desc {
+            max-width: 700px;
+            margin: 0.4rem 0 0.2rem;
+            font-size: 1rem;
+            color: #3a2e25;
+        }
+
+        .hero-wrap .highlight-link {
+            margin-top: 1.2rem;
+            display: inline-block;
+        }
+
+        .hero-wrap .highlight-link a {
+            background: #dba47f;
+            color: #241a14;
+            padding: 0.8rem 2.4rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(160, 90, 50, 0.20);
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .hero-wrap .highlight-link a:hover {
+            background: #c78a64;
+            transform: scale(1.02);
+        }
+
+        /* ---- 三场景模块 ---- */
+        .scene-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .scene-item {
+            background: #fffaf7;
+            border-radius: 28px;
+            padding: 1.8rem 1.6rem 2rem;
+            box-shadow: 0 6px 14px rgba(110, 70, 40, 0.06);
+            transition: transform 0.15s;
+        }
+
+        .scene-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .scene-icon {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .scene-item h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #4f3423;
+            margin-bottom: 0.5rem;
+        }
+
+        .scene-item p {
+            font-size: 0.95rem;
+            color: #4d3c2f;
+        }
+
+        /* ---- 常见说明 (FAQ 摘要式) ---- */
+        .faq-compact {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .faq-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            border-bottom: 1px solid #eddacd;
+            padding: 0.8rem 0;
+        }
+
+        .faq-row:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #3d2c1f;
+            font-size: 1rem;
+        }
+
+        .faq-a {
+            color: #4d3c30;
+            font-size: 0.95rem;
+        }
+
+        /* ---- 内嵌链接句子 ---- */
+        .inline-link-unit {
+            margin: 1.4rem 0 0.6rem;
+            font-size: 1rem;
+        }
+
+        .inline-link-unit a {
+            color: #8a5334;
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #cba284;
+        }
+
+        .inline-link-unit a:hover {
+            color: #623d26;
+        }
+
+        /* ---- 底部 ---- */
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b4a3b;
+            padding-top: 0.8rem;
+            border-top: 1px solid #e7d3c4;
+            margin-top: 0.8rem;
+        }
+
+        /* ---- 响应式 ---- */
+        @media (max-width: 640px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .top-nav {
+                padding: 0.7rem 1.2rem;
+                border-radius: 40px;
+            }
+            .site-identity {
+                font-size: 1.1rem;
+            }
+            .hero-wrap h1 {
+                font-size: 2rem;
+            }
+            .card {
+                padding: 1.6rem 1.2rem;
+            }
+            .scene-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-wrap .highlight-link a {
+                font-size: 1rem;
+                padding: 0.7rem 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-container">
+
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+        <span class="site-identity">📋 站点速览</span>
+        <ul class="nav-links">
+            <li><a href="#">介绍</a></li>
+            <li><a href="#">场景</a></li>
+            <li><a href="#">说明</a></li>
+            <li><a href="#" class="nav-em">爱游戏</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero – 核心介绍 -->
+    <div class="card hero-wrap">
+        <h1>快速识别 · 爱游戏用途</h1>
+        <div class="subhead">轻量导航 · 一目了然</div>
+        <p class="desc">
+            如果你刚接触这个网站，想快速判断它是否契合你的需求，这里整理了一份简洁的说明。
+            <strong>爱游戏</strong> 围绕内容聚合与互动体验，为使用者提供清晰的路径参考。
+        </p>
+        <div class="highlight-link">
+            <a href="https://newswap-igame.com">爱游戏</a>
+        </div>
+        <div class="inline-link-unit">
+            也可以在句子中直接使用：了解 <a href="https://newswap-igame.com">爱游戏</a> 的定位与功能。
+        </div>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scene-grid">
+        <div class="scene-item">
+            <span class="scene-icon">🔍</span>
+            <h3>快速辨别场景</h3>
+            <p>当你打开页面，先看顶部导航和当前区块标题，就能大致判断网站属于“工具型”“内容型”还是“社区型”。</p>
+        </div>
+        <div class="scene-item">
+            <span class="scene-icon">🧩</span>
+            <h3>功能入口场景</h3>
+            <p>从按钮、链接和卡片内容可以分辨核心操作。例如<a href="https://newswap-igame.com" style="color:#8a5334;text-decoration:underline;text-underline-offset:2px;">爱游戏</a>的视觉引导偏温和，适合浏览和初步探索。</p>
+        </div>
+        <div class="scene-item">
+            <span class="scene-icon">📌</span>
+            <h3>信息确认场景</h3>
+            <p>阅读常见说明、FAQ 摘要或底部描述，能帮你快速验证网站是否提供你需要的服务或内容方向。</p>
+        </div>
+    </div>
+
+    <!-- 常见说明 (FAQ 摘要) -->
+    <div class="card">
+        <h2 style="font-size:1.5rem; font-weight:600; color:#3f2b1d; margin-bottom:0.8rem;">常见说明 · 快速参考</h2>
+        <div class="faq-compact">
+            <div class="faq-row">
+                <span class="faq-q">这个网站主要做什么？</span>
+                <span class="faq-a">围绕“爱游戏”提供内容聚合、信息导航与轻量互动入口，方便你快速了解其用途。</span>
+            </div>
+            <div class="faq-row">
+                <span class="faq-q">如何进一步了解具体功能？</span>
+                <span class="faq-a">你可以直接点击页面中的 <a href="https://newswap-igame.com" style="color:#8a5334;font-weight:500;">爱游戏</a> 链接，进入完整站点查看详情。</span>
+            </div>
+            <div class="faq-row">
+                <span class="faq-q">是否包含下载或注册引导？</span>
+                <span class="faq-a">本页仅为介绍和导航，不涉及下载或注册引导。实际服务以爱游戏网站内说明为准。</span>
+            </div>
+            <div class="faq-row">
+                <span class="faq-q">信息准确吗？</span>
+                <span class="faq-a">这里汇总的是网站公开内容的提炼，建议你直接访问验证最新信息。</span>
+            </div>
+        </div>
+        <div style="margin-top:1.2rem; font-size:0.95rem; color:#4d3c2e;">
+            💡 提示：如果想全面了解，可以直接前往 <a href="https://newswap-igame.com" style="color:#8a5334;font-weight:500;">爱游戏</a> 浏览完整界面。
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        <span>轻量导航 · 内容参考 · 基于公开信息整理</span>
+        <span style="display:block; margin-top:0.3rem;">&copy; 介绍页 · 爱游戏</span>
+    </div>
+
+</div>
+</body>
+</html>
